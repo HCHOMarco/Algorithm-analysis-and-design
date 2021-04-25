@@ -9,26 +9,26 @@ inline int rd(){
     return x;
 }
 
-int n, m, cnt;// n万元，m个项目
+int n, m, cnt;// m万元，n个项目
 int cost[maxn], val[maxn], dp[maxn] = {0};
 
 int solve(){
     for(int i = 0; i < cnt; i++){
-        for(int j = n; j >= cost[i]; j--){
+        for(int j = m; j >= cost[i]; j--){
             dp[j] = max(dp[j], dp[j - cost[i]] + val[i]);
         }
     }
-    return dp[n];
+    return dp[m];
 }
 
 int main(){
-    n = rd();
     m = rd();
+    n = rd();
     cnt = 0;
     //对每个项目进行分解，将每一个项目转化为多个项目，问题就变成了0/1背包
-    for(int i = 0; i <= n; i++){
+    for(int i = 0; i <= m; i++){
         int give = rd();//付出
-        for(int j = 1; j <= m; j++){
+        for(int j = 1; j <= n; j++){
             cost[cnt] = give;
             val[cnt++] = rd();//价值
         }
