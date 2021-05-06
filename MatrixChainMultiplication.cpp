@@ -71,5 +71,6 @@ int main() {
 	print_s(s);
 	printf("M: \n");
 	print_s(m);
+	system("pause");
 	return 0;
 }
